@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+Saved Items
+{% endblock title %}
+
+{% block body %}
+<div class="container mt-3">
+<h1 class="mt-2"> Saved List Items are :</h1>
+    <div class="row">
+        {% for sitem in sitems %}
+                <div class="card col-md-3 my-4 mx-4" style="width: 18rem;">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ sitem.item_name }}</h4>
+                        <h5 class="card-subtitle mb-2 text-muted">{{ sitem.item_quantity }}</h5>
+                        <h6 class="card-subtitle mt-2 mb-2"> {{sitem.item_status}}</h6>
+                        <a href="deletesaved/{{ sitem.item_id }}" class="card-link mt-2">Delete</a>
+
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock body %}

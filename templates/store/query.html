@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Query Results
+{% endblock title %}
+{% block body %}
+<div class="container mt-2">
+    <div class="row">
+        {% for item in items %}
+            <div class="card col-md-3 my-4 mx-4" style="width: 18rem;">
+                <div class="card-body">
+                    <h4 class="card-title">{{ item.item_name }}</h4>
+                    <h5 class="card-subtitle mb-2 text-muted">{{ item.item_quantity }}</h5>
+                    <h6 class="card-subtitle mt-2 mb-2"> {{item.item_status}}</h6>
+                    <a href="updateView/{{ item.item_id }}" class="card-link mt-2">Update</a>
+                    <a href="deleted/{{ item.item_id }}" class="card-link mt-2">Delete</a>
+                    <a href="saveit/{{ item.item_id }}" class="card-link mt-2">Save</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock body %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+Update Item
+{% endblock title %}
+{% block body %}
+
+<div class= "container">
+
+    <div class="mt-4">
+    <h1> Update Grocery List</h1>
+    </div>
+    <form method="post" action="/update/{{item.item_id}}">
+    {% csrf_token %}
+    <div class="form-group mt-3">
+        <label for="name">Item Name</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{item.item_name}}" required>
+    </div>
+    <div class="form-group">
+        <label for="qty">Item Quantity</label>
+        <input type="text" class="form-control" id="qty" name="qty" value="{{item.item_quantity}}" required>
+    </div>
+    <div class="form-group">
+        <label for="status">Item Status</label>
+        <select class="form-control" id="status" name="status" value="{{item.item_status}}">
+        <option><h5>PENDING</h5></option>
+        <option><h5>BOUGHT</h5></option>
+        <option><h5>NOT AVAILABLE</h5></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" class="form-control" id="date" name="date" value="{{item.pub_date}}" required>
+    </div>
+    <button type="submit" class="btn btn-danger">Update</button>
+    </form>
+</div>
+
+{% endblock body %}
+
