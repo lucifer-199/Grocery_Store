@@ -5,6 +5,11 @@ Query Results
 {% endblock title %}
 {% block body %}
 <div class="container mt-2">
+    <div class="card">
+        <div class="card-body">
+            <h5>Your Search Results for {{rdate}} are : </h5>
+        </div>
+    </div>
     <div class="row">
         {% for item in items %}
             <div class="card col-md-3 my-4 mx-4" style="width: 18rem;">

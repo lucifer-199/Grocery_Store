@@ -13,13 +13,27 @@ Home
 {% block body %}
 <div class="container mt-3">
 <h1 class="mt-2"> Grocery List Items </h1>
+    {% if items|length < 1 %}
+        <div class="card mt-5">
+            <div class="card-header">
+                Message from Aniket Pratyush
+            </div>
+            <div class="card-body">
+                {% if user.is_authenticated %}
+                <h5 class="card-title"> You have successfully Logged In. Now you can add items to your Grocery Items List.</h5>
+                {% else %}
+                <h5 class="card-title"> Please Log In to add items to your Grocery Items List :)</h5>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
     <div class="row">
         {% for item in items %}
                 <div class="card col-md-3 my-4 mx-4" style="width: 18rem;">
                     <div class="card-body">
                         <h4 class="card-title">{{ item.item_name }}</h4>
                         <h5 class="card-subtitle mb-2 text-muted">{{ item.item_quantity }}</h5>
-                        <h6 class="card-subtitle mt-2 mb-2"> {{item.item_status}}</h6>
+                        <h6 class="card-subtitle mt-2 mb-2 {% if item.item_status == 'BOUGHT' %}one{% endif %} {% if item.item_status == 'PENDING' %}two{% endif %} {% if item.item_status == 'NOT AVAILABLE' %}three{% endif %} "> {{item.item_status}}</h6>
                         <a href="updateView/{{ item.item_id }}" class="card-link mt-2">Update</a>
                         <a href="deleted/{{ item.item_id }}" class="card-link mt-2">Delete</a>
                         <a href="saveit/{{ item.item_id }}" class="card-link mt-2">Save</a>
@@ -28,6 +42,7 @@ Home
                 </div>
         {% endfor %}
     </div>
+    
 </div>
 {% endblock body %}
 
